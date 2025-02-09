@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به انبار</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>ورود به انبار</h2>
+        <form id="loginForm">
+            <label for="username">نام کاربری:</label>
+            <input type="text" id="username" name="username" required placeholder="">
+
+            <label for="password">رمز عبور:</label>
+            <input type="password" id="password" name="password" required placeholder="********">
+
+            <button type="submit">ورود</button>
+        </form>
+        <p id="error-message" style="color: red; display: none;">نام کاربری یا رمز عبور اشتباه است.</p>
+    </div>
+
+    <script>
+        // اطلاعات ورود معتبر
+        const correctUsername = "Black Queen_Anbar";
+        const correctPassword = "12345";
+
+        // گرفتن فرم و نمایش پیام خطا
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // جلوگیری از ارسال پیش‌فرض فرم
+
+            // گرفتن داده‌های ورودی
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // بررسی اعتبار نام کاربری و رمز عبور
+            if (username === correctUsername && password === correctPassword) {
+                // اگر نام کاربری و رمز عبور درست بود، به صفحه اطلاعات منتقل شود
+                window.location.href = "inventory.html"; // هدایت به صفحه انبار
+            } else {
+                // اگر اشتباه بود، نمایش پیام خطا
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
